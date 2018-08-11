@@ -30,7 +30,7 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-        it('have valid urls', function() {
+        it('have valid urls for each feed', function() {
           expect(allFeeds.url).toBeDefined();
           expect(allFeeds.url.length).not.toBe(0);
         });
@@ -39,6 +39,10 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+        it('have valid names for each feed', function() {
+          expect(allFeeds.url).toBeDefined();
+          expect(allFeeds.url.length).not.toBe(0);
+        });
     });
 
 
