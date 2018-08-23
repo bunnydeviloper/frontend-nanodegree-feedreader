@@ -31,8 +31,10 @@ $(function() {
      * and that the URL is not empty.
      */
     it('have valid urls for each feed', function() {
-      expect(allFeeds.url).toBeDefined();
-      expect(allFeeds.url.length).not.toBe(0);
+      allFeeds.map(function(e) {
+        expect(e.url).toBeDefined();
+        expect(e.url.length).not.toBe(0);
+      });
     });
 
     /* TODO: Write a test that loops through each feed
@@ -40,21 +42,25 @@ $(function() {
      * and that the name is not empty.
      */
     it('have valid names for each feed', function() {
-      expect(allFeeds.url).toBeDefined();
-      expect(allFeeds.url.length).not.toBe(0);
+      allFeeds.map(function(e) {
+        expect(e.name).toBeDefined();
+        expect(e.name.length).not.toBe(0);
+      });
     });
   });
 
 
   /* TODO: Write a new test suite named "The menu" */
-  describe('The Menu', function() {
+  describe('The menu', function() {
     /* TODO: Write a test that ensures the menu element is
      * hidden by default. You'll have to analyze the HTML and
      * the CSS to determine how we're performing the
      * hiding/showing of the menu element.
      */
+
+    const body = document.querySelector('body');
     it('is hidden by default', function() {
-      // code
+      expect(body.classList).toContain('menu-hidden');
     });
 
     /* TODO: Write a test that ensures the menu changes
@@ -62,8 +68,14 @@ $(function() {
      * should have two expectations: does the menu display when
      * clicked and does it hide when clicked again.
      */
-    it('', function() {
-      // code
+    const menu = document.querySelector('.menu-icon-link');
+    it('is visible when clicked and is hidden when clicked again', function() {
+      menu.click();
+        expect(body.classList).not.toContain('menu-hidden');
+        // same as: expect(body.classList.contains('menu-hidden')).toBe(false);
+      menu.click(); // clicked the 2nd time
+        expect(body.classList).toContain('menu-hidden');
+        // same as: expect(body.classList.contains('menu-hidden')).toBe(true);
     });
   });
 
@@ -76,8 +88,13 @@ $(function() {
      * Remember, loadFeed() is asynchronous so this test will require
      * the use of Jasmine's beforeEach and asynchronous done() function.
      */
-    it('', function() {
-      // code
+    beforeEach(function(done) {
+      // everything inside here will execute before the 'expect' test below
+      loadFeed(0, done); // 'done' cb let Jasmine knows beforeEach is finished and it can start testing
+    });
+    it('finished loading with at least one entry', function() {
+      const feed = document.querySelector('.feed');
+      expect(feed.children.length > 0).toBe(true);
     });
   });
 
