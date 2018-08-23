@@ -2,13 +2,23 @@
 
 Testing pre-existing RSS feeds application with [Jasmine](http://jasmine.github.io/)
 
+## Usage
+If you would like to run this application locally or add any new test(s):
+  1. Clone (or fork) the app:  
+    `$ [sudo] git clone https://github.com/bunnydeviloper/jasmine-feedreader.git`
+  2. Easy open (make sure you `cd` into the app's directory):  
+    `$ open index.html` (MacOS) or `start index.html` (Windows)
+  3. Jasmine tests will run in the background and display results at the bottom of the page
+  4. If you would like to modify any test or add a new test:  
+    => change the Jasmin spec file in **./jasmine/spec/feedreader.js**
+
 ## Why this Project?
 
 * Testing is an important part of the development process and many organizations practice a standard of development known as "test-driven development". This is when developers write tests first, before they ever start developing their application. All the tests initially fail and then they start writing application code to make these tests pass.
 * Writing effective tests requires analyzing multiple aspects of an application including the HTML, CSS and JavaScript - an extremely important skill when changing teams or joining a new company.
 * Good tests give you the ability to quickly analyze whether new code breaks an existing feature within your codebase, without having to manually test all of the functionality.
 
-# How will I complete this project?
+## How will I complete this project?
 
 Review the Feed Reader Testing [Project Rubric](https://review.udacity.com/#!/projects/3442558598/rubric)
 
