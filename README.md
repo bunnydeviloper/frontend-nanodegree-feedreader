@@ -3,7 +3,8 @@
 Testing pre-existing RSS feeds application with [Jasmine](http://jasmine.github.io/)
 
 ## Usage
-If you would like to run this application locally or add any new test(s):
+* Checkout Live Demo [here](https://bunnydeviloper.github.io/jasmine-feedreader/)
+* If you would like to run this application locally or add any new test(s):
   1. Clone (or fork) the app:  
     `$ [sudo] git clone https://github.com/bunnydeviloper/jasmine-feedreader.git`
   2. Easy open (make sure you `cd` into the app's directory):  
