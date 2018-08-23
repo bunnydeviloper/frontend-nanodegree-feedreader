@@ -31,7 +31,7 @@ $(function() {
      * and that the URL is not empty.
      */
     it('have valid urls for each feed', function() {
-      allFeeds.map(function(e) {
+      allFeeds.forEach(function(e) {
         expect(e.url).toBeDefined();
         expect(e.url.length).not.toBe(0);
       });
@@ -55,7 +55,8 @@ $(function() {
     // This test ensures the menu element is hidden by default
     const body = document.querySelector('body');
     it('is hidden by default', function() {
-      expect(body.classList).toContain('menu-hidden');
+      expect($('body').hasClass('menu-hidden')).toBe(true); // using jQuery hasClass
+      // expect(body.classList).toContain('menu-hidden');
     });
 
     /* This test ensures the menu changes
@@ -86,9 +87,9 @@ $(function() {
       // because loadFeed() is asynchronous, 'done' cb let Jasmine knows beforeEach is finished and it can start testing
     });
     const feed = document.querySelector('.feed');
+    const entry = feed.getElementsByClassName('entry');
     it('finished loading with at least one entry', function() {
-      expect(feed.children.length).toBeGreaterThan(0);
-      // expect(feed.children.length > 0).toBe(true);
+      expect(entry.length).toBeGreaterThan(0);
     });
   });
 
