@@ -92,9 +92,10 @@ $(function() {
       // everything inside here will execute before the 'expect' test below
       loadFeed(0, done); // 'done' cb let Jasmine knows beforeEach is finished and it can start testing
     });
+    const feed = document.querySelector('.feed');
     it('finished loading with at least one entry', function() {
-      const feed = document.querySelector('.feed');
-      expect(feed.children.length > 0).toBe(true);
+      expect(feed.children.length).toBeGreaterThan(0);
+      // expect(feed.children.length > 0).toBe(true);
     });
   });
 
@@ -105,8 +106,23 @@ $(function() {
      * by the loadFeed function that the content actually changes.
      * Remember, loadFeed() is asynchronous.
      */
-    it('', function() {
-      // code
+
+    // reference help: https://github.com/bviengineer/frontend-nanodegree-feedreader/blob/master/jasmine/spec/feedreader.js
+    const feed = document.querySelector('.feed');
+    let firstFeed, secondFeed;
+
+    beforeEach(function(done) {
+      loadFeed(0, function(){
+        firstFeed = document.querySelector(".entry").innerText;
+
+        loadFeed(1, function(){
+          secondFeed = document.querySelector(".entry").innerText;
+          done();
+        });
+      });
+    });
+    it('has new contents each time new feed is loaded', function() {
+      expect(firstFeed !== secondFeed).toBe(true);
     });
   });
 }());
